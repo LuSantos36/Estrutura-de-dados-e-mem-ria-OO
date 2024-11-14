@@ -1,44 +1,40 @@
 class Pilha:
 
-
     def __init__(self, max_size):
         self.max_size = max_size
         self.produto = []
-    def push (self, produto):
-        if len(self.produto)< self.max_size:
-            self.produto.append (produto)
-            print(f"Produto {produto} adicionada a pilha.")
+    
+    def push(self, produto):
+        # Verifica se a pilha está cheia
+        if len(self.produto) < self.max_size:
+            self.produto.append(produto)
+            print(f"Produto {produto} adicionado à pilha.")
         else:
-            print(f" A pilha está cheia e não é possível adicionar mais produtos sem remover algum item.")
-
-
+            # Avisa que a pilha está cheia
+            print(f"A pilha está cheia e não é possível adicionar mais produtos sem remover algum item.")  # Linha alterada
+    
     def pop(self):
         if self.is_empty():
-            print(" A pilha está vazia. Nâo há item para remover.")
+            print("A pilha está vazia. Não há item para remover.")
             return None
         else:
             return self.produto.pop()
 
-
     def peek(self):
         if self.is_empty():
-            print(" A pilha está vazia. Nâo há item para retornar. ")
+            print("A pilha está vazia. Não há item para retornar.")
             return None
         else:
             return self.produto[-1]
 
-
     def is_empty(self):
-        return len(self.produto) == 0  #pilha vazia
-
+        return len(self.produto) == 0  # pilha vazia
 
     def max_size(self):
-        return self.max_size        #tamanho máximo
-
+        return self.max_size        # tamanho máximo
 
     def size(self):
-        return len(self.produto)    #tamanho atual
-
+        return len(self.produto)    # tamanho atual
 
     def print_stack(self):
         if self.is_empty():
@@ -47,12 +43,12 @@ class Pilha:
             print("O estado atual da pilha:", self.produto)
 
 
-def main ():          
+def main():          
     max_size = int(input("Digite o tamanho máximo da pilha: "))
    
     # tamanho máximo definido pelo usuário
     pilha = Pilha(max_size)
-    print(max_size)
+    print(f"Tamanho máximo da pilha definido como {max_size}.")
 
     while True:
         print("\nEscolha uma operação:")
@@ -65,13 +61,10 @@ def main ():
        
         opcao = input("Digite a opção desejada: ")
 
-
         if opcao == "1":
             produto = input("Digite o produto para adicionar: ")
             pilha.push(produto)
             pilha.print_stack()
-       
-
 
         elif opcao == "2":
             removed_produto = pilha.pop()
@@ -79,13 +72,11 @@ def main ():
                 print(f"Produto removido: {removed_produto}")
             pilha.print_stack()
 
-
         elif opcao == "3":
             topo = pilha.peek()
             if topo is not None:
                 print(f"Topo da pilha: {topo}")
             pilha.print_stack()
-
 
         elif opcao == "4":
             if pilha.is_empty():
@@ -94,21 +85,15 @@ def main ():
                 print("A pilha não está vazia.")
             pilha.print_stack()
 
-       
         elif opcao == "5":
-            print(f"O tamanho da pilha é {pilha.size()} ")
-
-
+            print(f"O tamanho da pilha é {pilha.size()}")
 
         elif opcao == "6":
             print("Saindo do programa...")
             break
 
-
         else:
             print("Opção inválida! Tente novamente.")
-
-
 
 
 if __name__ == "__main__":
